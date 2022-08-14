@@ -1,0 +1,217 @@
+
+:root{
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+    --border: 0.2rem solid rgba(0,0,0,.1);
+    --light-purplr:#9A51FF;
+    --dark-purplr:#5D4285;
+    --purplr:rgb(122,69,229);
+    --light-dark:#888;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+body {
+    font-size: 14px;
+    color: #363636;
+    background-color: #333;
+}
+.pannel{
+    margin:0 auto;
+    width: 790px;
+}
+.device{
+    width: 375px;
+    height: 667px;
+    background-color: white;
+    margin: 10px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+.device header{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 4%;
+}
+.tab-wrap{
+    height: 60px;
+    overflow: hidden;
+}
+.cate-tab{
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--dark-purplr);
+}
+.cate-tab .cate{
+    display: inline-block;
+    width: 80px;
+    height: 70px;
+    color:#fff;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+.cate.active{
+    background-color: var(--light-purplr);
+    
+}
+.filter-wrap{
+    height: 40px;
+    overflow: hidden;
+}
+.filter-tab{
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+.filter-tab .filter{
+    height: 50px;
+    line-height: 40px;
+    display: inline-block;
+    cursor: pointer;
+}
+.filter-price:after{
+    content: '';
+    display: inline-block;
+    background:url(./img/arrow-default.png) no-repeat;
+    width: 8px;
+    height: 16px;
+    margin-left: 5px;
+    position: absolute;
+    top: 12px;
+}
+.filter-price.active.price-up:after {
+    background: url('img/arrow-down.png') no-repeat;
+    background-size: 8px 16px;
+}
+
+.filter-price.active.price-down:after {
+    background: url('img/arrow-up.png') no-repeat;
+    background-size: 8px 16px;
+}
+
+.filter-tab .filter.active{
+    color: var(--light-purplr);
+}
+.goods-wrap{
+    overflow: scroll;
+    background-color: rgb(238,238,238);
+    height: 100%;
+}
+.goods-box{
+    background-color: #fff;
+    position: relative;
+    margin: 10px 0 ;
+    padding: 10px 0;
+    
+}
+
+.goods-box .img-wrap{
+    height: 70px;
+    width: 70px;
+    float: left;
+    text-align: center;
+    padding: 5px 0;
+}
+.goods-box img{
+    height: 50px;
+    width: 50px;
+}
+.goods-box .title{
+    width: 60%;
+    height: 38px;
+    color: #363636;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.goods-box .price{
+    color: var(--purplr);
+    font-weight:bold;
+    margin-top: 20px;
+}
+.goods-box .sales{
+    color: var(--light-dark);
+    font-size: 12px;
+}
+.goods-box .addBtn{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: var(--purplr);
+    color: #fff;
+    padding: 2px 12px;
+    border: none;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#page-cart .editTab{
+    float: right;
+    padding: 0 10px;
+
+}
+.editBtn{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.footer{
+    background-color: white;
+    height: 52px;    
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.footer .select-box{
+    margin-left: 10px;
+    font-size: 16px;
+}
+.footer .select-box input,label{
+    cursor: pointer;
+    margin:0 2px;
+}
+.footer .check-box {
+  position: absolute;
+  right: 0;
+}
+.footer .selectedPrice{
+    display: inline-block;
+    padding: 0 10px;
+}
+.footer .selectedPrice span{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--purplr);
+}
+.footer .checkout{
+    border: none;
+    color: #fff;
+    background-color: var(--purplr);
+    width: 120px;
+    height: 52px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.cart-list{
+    background-color:#eee;
+    height: 100%;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>购物车</title>
+</head>
+
+<body>
+
+    <div class="pannel">
+        <div class="device" id="page-list">
+            <header>
+                <span> 商品列表</span>
+            </header>
+            <div class="tab-wrap">
+                <ul class="cate-tab">
+                    <li class="cate" v-for="(item,index) in cates" :class="{'active': cateIndex === index}"
+                        @click="changeCate(index)">
+                        {{item}}</li>
+                </ul>
+            </div>
+            <div class="filter-wrap">
+                <ul class="filter-tab">
+                    <li class="filter" v-for="(item,index) in filters"
+                        :class="{'active':filterIndex === index,'filter-price':index ===2, 'price-up':sortFlag%2===0 ,'price-down':sortFlag%2!=0}"
+                        @click="sortBy(index)">
+                        {{item}}</li>
+                </ul>
+            </div>
+            <div class="goods-wrap">
+                <div class="goods-box" v-for="(item,index) in goodsList">
+                    <div class="img-wrap"> <img :src="item.path"></div>
+                    <div class="info">
+                        <p class="title">{{item.title}}</p>
+                        <p class="price">¥{{item.price}}</p>
+                        <p class="sales">{{item.sales}}人付款</p>
+                    </div>
+                    <button class="addBtn">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="device" id="page-cart">
+            <header>
+                <span>购物车</span>
+                <div class="editTab">
+                    <button class="editBtn">编辑</button>
+                </div>
+            </header>
+            <div class="cart-list">
+                <p>这里是空的，快去逛逛</p>
+            </div>
+            <div class="footer">
+                <div class="select-box">
+                    <input type="radio" id="selectAll">
+                    <label for="selectAll">全选</label>
+                </div>
+                <div class="check-box">
+                    <div class="selectedPrice">合计：<span>¥ {{selectedPrice}}</span></div>
+                    <button class="checkout">去结算({{selectedPrice}})</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="vue.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
