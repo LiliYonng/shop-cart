@@ -39,7 +39,7 @@
                         <p class="price">¥{{item.price}}</p>
                         <p class="sales">{{item.sales}}人付款</p>
                     </div>
-                    <button class="addBtn">+</button>
+                    <button class="addBtn" @click="addToCart(item)">+</button>
                 </div>
             </div>
         </div>
@@ -51,16 +51,52 @@
                 </div>
             </header>
             <div class="cart-list">
-                <p>这里是空的，快去逛逛</p>
+                <p v-if="!cartList[0]">这里是空的，快去逛逛</p>
+
+                <div class="cart-box" v-for="(item,index) in cartList">
+                    <div class="icon-selector" @click="selectIcon(item,index)">
+                        <div class="selectBtn" v-bind:class="{'selector-active': item.Checked}">
+                            <svg t="1504061791962" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="2922"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12">
+                                <path
+                                    d="M908.288 127.488l-537.6 537.6-254.976-254.976L0 525.824l254.976 254.976 115.712 115.712L486.4 780.8l537.6-537.6z"
+                                    fill="#ffffff" p-id="2923"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="img-wrap">
+                        <img :src="item.path">
+                    </div>
+                    <div class="info">
+                        <p class="title">{{item.title}}</p>
+                        <p class="price">¥{{item.price}}</p>
+                        <p class="store">库存{{item.store}}件</p>
+                    </div>
+                    <div class="Btn">
+                        <div class="addBtn" @click="changeQty(1,item)">+</div>
+                        {{item.Qty}}
+                        <div class="desBtn" @click="changeQty(-1,item)">-</div>
+                    </div>
+                </div>
+
             </div>
             <div class="footer">
                 <div class="select-box">
-                    <input type="radio" id="selectAll">
-                    <label for="selectAll">全选</label>
+                    <div class="selectBtn" :class="{'selector-active' : allFlag}" @click="checkAll">
+                        <svg t="1504061791962" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="2922" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="12" height="12">
+                            <path
+                                d="M908.288 127.488l-537.6 537.6-254.976-254.976L0 525.824l254.976 254.976 115.712 115.712L486.4 780.8l537.6-537.6z"
+                                fill="#ffffff" p-id="2923"></path>
+                        </svg>
+
+                    </div> 全选
                 </div>
                 <div class="check-box">
-                    <div class="selectedPrice">合计：<span>¥ {{selectedPrice}}</span></div>
-                    <button class="checkout">去结算({{selectedPrice}})</button>
+                    <div class="amount">合计：<span>¥ {{amount}}</span></div>
+                    <button class="checkout">去结算({{amount}})</button>
                 </div>
             </div>
         </div>
