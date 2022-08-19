@@ -177,16 +177,46 @@ var Cart = new Vue({
     data: {
         cartList: [],
         checkedNum: 0,
-        allFlag:false,
+        allFlag: false,
+        editFlag: false,
     },
     methods: {
+        /* 编辑商品 */
+        editGoods: function () {
+            this.editFlag = !this.editFlag;  
+        },
+        /*
+        遍历删除不能使用forEach，因为forEach会缓存数组length进行遍历，
+        而遍历过程中进行的删除操作会改变原数组的length。
+        而使用for遍历时，可以利用i--来处理原数组的length
+        也可以用filter生成不被选中的数组
+        */
+        delGoods: function () {
+        //     let cart = this.cartList;
+        //     this.cartList = cart.filter(item => {
+        //         return !item.Checked;
+        //    })
+            for (let i = 0; i < this.cartList.length;i++){
+                if (this.cartList[i].Checked)
+                {
+                    this.cartList.splice(i, 1);
+                    i--;
+                }   
+                
+            }
+            //重置全选按钮和选项数
+            this.checkedNum = 0;
+            this.isAll();
+        },
+        /*商品数量改变按钮 */
         changeQty: function (flag, item) {
             if (flag === 1 && item.Qty < item.store)
                 item.Qty++;
             else if (flag === -1 && item.Qty > 1)
                 item.Qty--;
         },
-        selectIcon: function (item, index) {
+        /*商品选择按钮 */
+        selectIcon: function (item) {
             item.Checked = !item.Checked;
             if (item.Checked)
                 this.checkedNum++;
@@ -196,7 +226,7 @@ var Cart = new Vue({
         },
         /*根据checkedNum来判断当前状态是否全部已选 */
         isAll: function () {
-            if (this.checkedNum == this.cartList.length)
+            if (this.cartList.length && this.checkedNum == this.cartList.length)
                 this.allFlag = true;
             else
                 this.allFlag = false;  

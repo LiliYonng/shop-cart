@@ -47,11 +47,14 @@
             <header>
                 <span>购物车</span>
                 <div class="editTab">
-                    <button class="editBtn">编辑</button>
+                    <div class="editBtn" @click="editGoods">
+                        <span v-show="!editFlag">编辑</span>
+                        <span v-show="editFlag">完成</span>
+                    </div>
                 </div>
             </header>
             <div class="cart-list">
-                <p v-if="!cartList[0]">这里是空的，快去逛逛</p>
+                <p class='empty-content' v-if="!cartList[0]">这里是空的，快去逛逛吧</p>
 
                 <div class="cart-box" v-for="(item,index) in cartList">
                     <div class="icon-selector" @click="selectIcon(item,index)">
@@ -94,9 +97,14 @@
 
                     </div> 全选
                 </div>
-                <div class="check-box">
-                    <div class="amount">合计：<span>¥ {{amount}}</span></div>
-                    <button class="checkout">去结算({{amount}})</button>
+                <div class="oprate-box">
+                    <div class="check-Btn" v-show="!editFlag">
+                        <div class="amount">合计：<span>¥ {{amount}}</span></div>
+                        <button class="checkout oprateBtn">去结算({{amount}})</button>
+                    </div>
+                    <div class="del-Btn" v-show="editFlag">
+                        <button class="delete oprateBtn" @click="delGoods">删除({{checkedNum}})</button>
+                    </div>
                 </div>
             </div>
         </div>

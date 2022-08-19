@@ -164,11 +164,8 @@ body {
 #page-cart .editTab{
     float: right;
     padding: 0 10px;
-
 }
-.editBtn{
-    border: none;
-    background: none;
+.editTab .editBtn{
     cursor: pointer;
 }
 .footer{
@@ -189,35 +186,45 @@ body {
     display: inline-block;
 }
 
-.footer .check-box {
+.footer .oprate-box {
   position: absolute;
   right: 0;
 }
-.footer .amount{
-    display: inline-block;
-    padding: 0 10px;
-}
-.footer .amount span{
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--purplr);
-}
-.footer .checkout{
+.oprate-box .oprateBtn{
     border: none;
     color: #fff;
-    background-color: var(--purplr);
     width: 120px;
     height: 52px;
     font-size: 15px;
     cursor: pointer;
 }
-
-.cart-list{
-    background-color:#eee;
-    height: 564px;
-    overflow-y: scroll;
+.check-Btn .amount{
+    display: inline-block;
+    padding: 0 10px;
+}
+.check-Btn .amount span{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--purplr);
+}
+.check-Btn .checkout{
+    background-color: var(--purplr);
 }
 
+.del-Btn .delete{
+    background-color: #FF4069;
+}
+.cart-list{
+    background-color:#eee;
+    height: 570px;
+    overflow-y: scroll;
+}
+.cart-list .empty-content {
+    color: #AEB0B7;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20%;
+}
 .cart-list .cart-box{
     background-color: #fff;
     position: relative;
