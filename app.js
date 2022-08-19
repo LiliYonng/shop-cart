@@ -103,7 +103,11 @@ data: {
     goodsList:[],
     
  },
-methods: {
+    methods: {
+    /**
+     * 改变和选择分类
+     * @param {选择的分类项} index 
+     */
     changeCate: function (index) {
         this.filterIndex = 0;
         this.goodsList = [];
@@ -143,6 +147,10 @@ methods: {
                     return (x - y);
             });}
     },
+    /**
+     * 添加商品到购物车：新增购物车列或增加数量
+     * @param {选中的商品} goods 
+     */
     addToCart(goods) {
         let added_index = Cart.cartList.findIndex(item => {
             return item.id === goods.id;
@@ -153,6 +161,8 @@ methods: {
             Cart.cartList.push(goods);
             Cart.$set(Cart.cartList[index], "Qty", 1);
             Cart.$set(Cart.cartList[index], "Checked", true);
+            //重置编辑页面，选项数和全选按钮
+            Cart.editFlag = false;
             Cart.checkedNum++;
             Cart.isAll();
         }
